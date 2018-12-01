@@ -6,7 +6,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "start": "concurrently \"PORT=3001 react-app-rewired start\" \"npm run watch-less\"",
+    "dev": "concurrently \"PORT=3001 react-app-rewired start\" \"npm run watch-less\"",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",
     "lint": "eslint ./src",
@@ -16,7 +16,7 @@
     "build:css": "for file in src/css/*.less; do lessc $file `dirname $file`/`basename $file .less`.css ; done",
     "build:libs": "npm run build:libs:status",
     "build:libs:status": "cd lib/metronome-status-js && npm i && npm run build",
-    "prestart": "npm run fix-deps",
+    "predev": "npm run fix-deps",
     "prebuild": "npm run fix-deps && npm run build:libs && npm run build:css",
     "postinstall": "patch-package",
     "watch-less": "react-less-watcher -d src/css"
